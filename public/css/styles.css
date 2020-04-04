@@ -1,0 +1,18 @@
+#imagenMiniatura{
+
+
+    width: 200px;
+    height: 200px;
+}
+
+.video-title{
+
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.video-title a{
+
+   color: black;
+   text-decoration: none;
+}

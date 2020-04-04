@@ -7,7 +7,7 @@ use App\Http\Requests;
 
 use Iluminate\Support\Facades\DB; //para metodos de Base de datos
 use Iluminate\Support\Facades\Storage; //Para guardar archivos
-use Symphony\Component\HttpFoundation\Response; //para respuestas
+use Symfony\Component\HttpFoundation\Response; //para respuestas
 
 
 use App\Video; //modelo de videos
@@ -56,7 +56,7 @@ $video->image = $image_path;
   if($video_file){
 
     $video_path = time().$video_file->getClientOriginalName();
-    \Storage::disk('video')->put($video_path, \File::get($video_file));
+    \Storage::disk('videos')->put($video_path, \File::get($video_file));
 
     $video->video_path = $video_path;
   }
@@ -72,6 +72,25 @@ return redirect()->route('home')->with(array(
 ));
 
   }
+
+  //obtenemos la imagen guardada en images
+  public function getImage($filename){
+
+ $file = \Storage::disk('images')->get($filename);
+ return new Response ($file, 200);
+
+  }
+
+ //nos permite sacar el detalle del video por id
+
+ public function getVideoDetail(){
+$video =Video::find($video_id);
+
+return view('video.detail',array(
+
+  'video' => $video
+));
+ }
 
     
 }

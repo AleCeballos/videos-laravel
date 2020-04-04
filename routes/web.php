@@ -37,3 +37,22 @@ Route::get('/crear-video',array(
      'uses' => 'VideoController@saveVideo'
 
  ));
+
+
+ Route::get('/miniatura/{filename}', array (
+'as'=>'imageVideo',
+'uses'=>'VideoController@getImage'
+
+
+ ));
+
+ 
+
+ //pagina de detalles de video
+ Route::get('/video/{video_id}', array (
+    'as'=>'detailVideo',
+    'uses'=>'VideoController@getVideoDetail'
+    
+    
+     ));
+    
