@@ -34,6 +34,8 @@ Tu navegador no es compatible con html5
 </div>
 
 <!-- COMENTARIOS -->
+
+@include('video.comments')
 </div>
 </div>
 

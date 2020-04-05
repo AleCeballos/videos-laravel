@@ -64,3 +64,13 @@ Route::get('/crear-video',array(
     
     
      ));
+
+
+     //comentarios
+     Route::post('/comment', array (
+        'as'=>'comment',
+        'middleware' => 'auth',
+        'uses'=>'CommentController@store'
+        
+        
+         ));
