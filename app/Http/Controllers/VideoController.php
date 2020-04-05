@@ -83,7 +83,7 @@ return redirect()->route('home')->with(array(
 
  //nos permite sacar el detalle del video por id
 
- public function getVideoDetail(){
+ public function getVideoDetail($video_id){
 $video =Video::find($video_id);
 
 return view('video.detail',array(
@@ -91,6 +91,13 @@ return view('video.detail',array(
   'video' => $video
 ));
  }
+ 
+  //obtenemos el video
+  public function getVideo($filename){
 
+    $file = \Storage::disk('videos')->get($filename);
+    return new Response ($file, 200);
+   
+     }
     
 }

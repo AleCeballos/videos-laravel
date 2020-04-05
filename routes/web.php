@@ -56,3 +56,11 @@ Route::get('/crear-video',array(
     
      ));
     
+
+      //traigo el video
+ Route::get('/video-file/{filename}', array (
+    'as'=>'fileVideo',
+    'uses'=>'VideoController@getVideo'
+    
+    
+     ));
