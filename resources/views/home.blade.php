@@ -46,7 +46,30 @@
       <a href="" class="btn btn-success">Ver</a>
       @if (Auth::check() && Auth::user()->id==$video->user->id)
       <a href="" class="btn btn-warning">Editar</a>
-      <a href="" class="btn btn-danger">Eliminar</a>
+      <a href="#victorModal{{$video->id}}" role="button" class="btn btn-large btn-danger " data-toggle="modal">Eliminar video</a>
+
+      <!-- //////////////////////// -->
+        <!-- Modal / Ventana / Overlay en HTML -->
+  <div id="victorModal{{$video->id}}" class="modal fade">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">¿Estás seguro?</h4>
+              </div>
+              <div class="modal-body">
+                  <p>¿Seguro que quieres borrar este video?</p>
+                  <p class="text-dark"><small>{{$video->title}}</small></p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <a href="{{url('/delete-video/'.$video->id)}}" type="button" class="btn btn-danger">Eliminar</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+      <!-- /////////////////////// -->
       @endif
       </div>
     </div>

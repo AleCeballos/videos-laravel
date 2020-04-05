@@ -100,4 +100,37 @@ return view('video.detail',array(
    
      }
     
+  //eliminar video
+  public function delete($video_id){
+
+    $user = \Auth::user();
+    $video = Video::find($video_id);;
+    $comments = Comment::where('video_id', $video_id)->get();
+    
+    if($user && $video->user_id == $user->id){
+
+      //Eliminar los comentarios si existen
+      if($comments && count($comments)>=1){
+           $comments->delete();
+      }
+
+   //eliminar ficheros imagenes videos etc
+\Storage::disk('images')->delete($video->image);
+\Storage::disk('videos')->delete($video->video_path);
+   //eliminar registros
+
+
+      $video->delete();
+
+      $message = array('message' => 'Video eliminado correctamente');
+    }else{
+
+      $message = array('message' => 'El video no se ha eliminado');
+    }
+
+return redirect()->route('home')->with($message);
+
+     }
+
+
 }

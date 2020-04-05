@@ -85,3 +85,13 @@ Route::get('/crear-video',array(
     
     
      ));
+
+
+           //eliminar video
+ Route::get('/delete-video/{video_id}', array (
+    'as'=>'videoDelete',
+    'middleware' => 'auth',
+    'uses'=>'VideoController@delete'
+    
+    
+     ));
