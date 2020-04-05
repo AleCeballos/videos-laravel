@@ -74,3 +74,14 @@ Route::get('/crear-video',array(
         
         
          ));
+
+
+         
+      //eliminar comentario
+ Route::get('/delete-comment/{comment_id}', array (
+    'as'=>'commentDelete',
+    'middleware' => 'auth',
+    'uses'=>'CommentController@delete'
+    
+    
+     ));

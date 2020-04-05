@@ -19,10 +19,10 @@ Tu navegador no es compatible con html5
 </video>
 <div class="card-body">
 <!-- DESCRIPCION -->
-<div class="card border-0">
+<div class="card border-0 ">
   <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+  <div class="card-body ">
+    <h5 class="card-title ">Special title treatment</h5>
     <p>Subido por <strong>{{$video->user->name.' '.$video->user->surname}}</strong> <span>{{\FormatTime::LongTimeFilter($video->created_at)}}</span></p>
     <p class="card-text">Descripción del video</p>
     <p>{{$video->description}}</p>
@@ -36,7 +36,9 @@ Tu navegador no es compatible con html5
 <!-- COMENTARIOS -->
 
 @include('video.comments')
+
 </div>
 </div>
+
 
 @endsection

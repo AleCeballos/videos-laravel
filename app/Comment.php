@@ -13,6 +13,14 @@ class Comment extends Model
 
 public function user(){
 
-    return $this->belongso('App\User','user_id');
+    return $this->belongsTo('App\User','user_id');
  }
+
+
+ //para borrar comentarios de video segun la utenticacion
+ public function video(){
+
+   return $this->belongsTo('App\Video','video_id');
+}
+
 }

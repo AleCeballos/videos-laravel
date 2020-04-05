@@ -35,4 +35,25 @@ class CommentController extends Controller
  
  ));
     }
+
+    public function delete ($comment_id){
+
+   $user = \Auth::user();
+   $comment = Comment::find($comment_id);
+
+   //comprobamos si fue creado por el usuario que esta identificado, y si el dueño del video quiere borarlo
+if($user && ($comment->user_id == $user->id || $comment->video->user_id == $user->id)){
+
+$comment->delete();
+
+return redirect()->route('detailVideo',[
+       'video_id' =>$comment->video_id])->with(array(
+'message' =>'comentario borrado correctamente!'
+
+
+));
+}
+
+
+    }
 }
