@@ -111,7 +111,13 @@ return view('video.detail',array(
 
       //Eliminar los comentarios si existen
       if($comments && count($comments)>=1){
-           $comments->delete();
+          
+        foreach($comments as $comment){
+
+          $comment->delete();
+        }
+        
+       
       }
 
    //eliminar ficheros imagenes videos etc
@@ -132,5 +138,71 @@ return redirect()->route('home')->with($message);
 
      }
 
+     //actualizar registros
+ 
+    public function edit($video_id){
+      $user = \Auth::user();
+      $video =  Video::findOrFail($video_id);
+
+      if($user && $video->user_id == $user->id){
+
+
+
+return view ('video.edit', array ('video'=>$video));
+
+
+      }else{
+
+        return redirect()->route('home');
+      }
+    }
+
+
+    public function update($video_id, Request $request){
+
+     // validar formulario
+    $validatedData = $this->validate($request,[
+      'title' => 'required|min:5',
+      'description' => 'required',
+      'video' => 'mimes:mp4'
+
+   ]);
+
+
+   //
+   $user =\Auth::user(); //usuario identificado
+   $video = Video::findOrFail($video_id);//obtenemos el video que queremos editar
+   //asignamos los valores a las propiedades
+   $video->user_id = $user->id;
+   $video->title = $request->input('title');
+   $video->description = $request->input('description');
+
+
+  //subida de la miniatura 
+$image = $request->file('image');
+if($image){
+
+  $image_path = time().$image->getClientOriginalName(); //conseguimos nombre de la imagen 
+  \Storage::disk('images')->put($image_path, \File::get($image)); //la imagen
+
+$video->image = $image_path;
+}
+
+  //subida del video
+
+  $video_file = $request->file('video');
+  if($video_file){
+
+    $video_path = time().$video_file->getClientOriginalName();
+    \Storage::disk('videos')->put($video_path, \File::get($video_file));
+
+    $video->video_path = $video_path;
+  }
+
+  $video->update();
+
+
+  return redirect()->route('home')->with(array('message' => 'El video se ha actualizado correctamente'));
+}
 
 }

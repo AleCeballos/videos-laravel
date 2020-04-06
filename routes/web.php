@@ -95,3 +95,21 @@ Route::get('/crear-video',array(
     
     
      ));
+
+               //editar video
+ Route::get('/editar-video/{video_id}', array (
+    'as'=>'videoEdit',
+    'middleware' => 'auth',
+    'uses'=>'VideoController@edit'
+    
+    
+     ));
+
+
+     //actualiza
+     Route::post('/update-video/{video_id}',array(
+        'as'=>'updateVideo',
+         'middleware' => 'auth',
+         'uses' => 'VideoController@update'
+    
+     ));

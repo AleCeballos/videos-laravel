@@ -43,9 +43,9 @@
 
 
       <!-- BOTONES DE ACCION -->
-      <a href="" class="btn btn-success">Ver</a>
+      <a href="{{route('detailVideo',['video_id'=>$video->id])}}" class="btn btn-success">Ver</a>
       @if (Auth::check() && Auth::user()->id==$video->user->id)
-      <a href="" class="btn btn-warning">Editar</a>
+      <a href="{{route('videoEdit',['video_id'=>$video->id])}}" class="btn btn-warning">Editar</a>
       <a href="#victorModal{{$video->id}}" role="button" class="btn btn-large btn-danger " data-toggle="modal">Eliminar video</a>
 
       <!-- //////////////////////// -->
