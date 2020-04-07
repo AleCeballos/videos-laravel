@@ -196,6 +196,8 @@ $video->image = $image_path;
     $video_path = time().$video_file->getClientOriginalName();
     \Storage::disk('videos')->put($video_path, \File::get($video_file));
 
+
+    //COMPLETAR ACA PARA QUE BORRE EL FICHERO ANTIGUO EN LA EDICIÓN  67
     $video->video_path = $video_path;
   }
 
