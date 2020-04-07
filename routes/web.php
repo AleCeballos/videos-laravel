@@ -113,3 +113,11 @@ Route::get('/crear-video',array(
          'uses' => 'VideoController@update'
     
      ));
+
+
+     //busca los videos 
+     Route::get('/buscar/{search?}',[
+
+      'as'=>'videoSearch',
+      'uses'=>'VideoController@search'
+     ]);

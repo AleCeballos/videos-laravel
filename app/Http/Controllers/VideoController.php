@@ -207,4 +207,28 @@ $video->image = $image_path;
   return redirect()->route('home')->with(array('message' => 'El video se ha actualizado correctamente'));
 }
 
+
+//busca los videos 
+public function search($search = null){
+   
+   if(is_null($search)){
+
+    $search = \Request::get('search');
+    return redirect()->route('videoSearch',array('search'=>$search)); //limpia el get del search
+   }
+
+  $videos = Video::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
+
+
+
+  return view('video.search',array(
+
+    'videos' => $videos,
+    'search' => $search
+
+  ));
 }
+
+
+}
+
