@@ -116,8 +116,15 @@ Route::get('/crear-video',array(
 
 
      //busca los videos 
-     Route::get('/buscar/{search?}',[
+     Route::get('/buscar/{search?}/{filter?}',[
 
       'as'=>'videoSearch',
       'uses'=>'VideoController@search'
      ]);
+
+     //borra la caché
+     Route::get('/clear-cache',function(){
+
+          $code = Artisan::call('cache:clear');
+
+});

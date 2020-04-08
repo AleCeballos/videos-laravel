@@ -20,8 +20,8 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title video-title"><a href="{{route('detailVideo',['video_id'=>$video->id])}}">{{$video->title}}</a></h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p class="card-text">{{$video->description}}</p>
+        <p class="card-text"><small class="text-muted">{{\FormatTime::LongTimeFilter($video->created_at)}}</small></p>
         <p class="card-text"><small class="text-muted">{{$video->user->name.''.$video->user->surname}}</small></p>
       
 
