@@ -54,7 +54,7 @@
                                 
                             @endif
                         @else
-                        <a class="nav-link pl-5 " href="{{route('home')}}">home</a>
+                        <a class="nav-link pl-5 " href="{{url('/')}}">Inicio</a>
                         <a class="nav-link pl-5" href="{{route('createVideo')}}">Subir videos</a>
                         <li>   
                         

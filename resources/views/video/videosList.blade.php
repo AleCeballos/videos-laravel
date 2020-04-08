@@ -22,7 +22,7 @@
         <h5 class="card-title video-title"><a href="{{route('detailVideo',['video_id'=>$video->id])}}">{{$video->title}}</a></h5>
         <p class="card-text">{{$video->description}}</p>
         <p class="card-text"><small class="text-muted">{{\FormatTime::LongTimeFilter($video->created_at)}}</small></p>
-        <p class="card-text"><small class="text-muted">{{$video->user->name.''.$video->user->surname}}</small></p>
+        <p class="card-text"><small class="text-muted"><a href="{{route('channel',['user_id' => $video->user->id])}}">{{$video->user->name.''.$video->user->surname}}</a></small></p>
       
 
 

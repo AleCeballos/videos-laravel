@@ -1,6 +1,6 @@
 
 
-@extends('layouts.app')
+ @extends('layouts.app')  <!--heredamos de la plantilla maestra -->
 
 
 @section('content')
@@ -53,7 +53,7 @@
 
 
 
-@include('video.videosList')
+@include('video.videosList') <!-- muestra un listado de los videos que le paso desde el controlador -->
 
 
 <!-- fin de class container  -->

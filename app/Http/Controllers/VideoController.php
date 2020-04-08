@@ -212,8 +212,13 @@ $video->image = $image_path;
 public function search($search = null, $filter = null){
    
    if(is_null($search)){
-
     $search = \Request::get('search');
+          
+    if(is_null($search)){
+
+      return redirect()->route('home');
+    }     
+
     return redirect()->route('videoSearch',array('search'=>$search)); //limpia el get del search
    }
 

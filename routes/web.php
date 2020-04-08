@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', array(
+Route::get('/', array(
     'as'=>'home',
     'uses' => 'HomeController@index'
 ));
@@ -128,3 +128,10 @@ Route::get('/crear-video',array(
           $code = Artisan::call('cache:clear');
 
 });
+
+   //usuarios
+   Route::get('/canal/{user_id}',array(
+      'as'=>'channel',
+       'uses' => 'UserController@channel'
+  
+   ));

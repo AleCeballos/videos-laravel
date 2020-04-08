@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth'); //para que el home sea publico
+        $this->middleware('web'); //quito auth para que el home sea publico
     }
 
     /**

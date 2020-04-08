@@ -23,7 +23,7 @@ Tu navegador no es compatible con html5
   <h5 class="card-header">Featured</h5>
   <div class="card-body ">
     <h5 class="card-title ">Special title treatment</h5>
-    <p>Subido por <strong>{{$video->user->name.' '.$video->user->surname}}</strong> <span>{{\FormatTime::LongTimeFilter($video->created_at)}}</span></p>
+    <p>Subido por <strong><a href="{{route('channel',['user_id' => $video->user->id])}}">{{$video->user->name.' '.$video->user->surname}}</a></strong> <span>{{\FormatTime::LongTimeFilter($video->created_at)}}</span></p>
     <p class="card-text">Descripción del video</p>
     <p>{{$video->description}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
